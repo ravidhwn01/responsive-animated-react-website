@@ -1,11 +1,11 @@
 import About from "./components/About";
 import Home from "./components/Home";
 import Services from "./components/Services";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 
-function App() {
+export default function App(){
   return (
     <>
       <Router>
@@ -13,26 +13,23 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/services">
+          <Route  exact path="/services">
             <Services />
           </Route>
-          <Route path="/contact">
+          <Route exact path="/contact">   
             <Contact />
           </Route>
-          <Route path="/about">
+          <Route exact path="/about">
             <About />
           </Route>
-          <Route path="*">
+          {/* <Route path="*">
             <Error />
-          </Route>
+          </Route> */}
+          <Redirect to= "/" />
         </Switch>
       </Router>
-
-      {/* <Home/>
-      <Services/>
-      <About/> */}
     </>
   );
 }
 
-export default App;
+
