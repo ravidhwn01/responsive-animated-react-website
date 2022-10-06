@@ -1,25 +1,80 @@
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import About from "./components/About";
 import Home from "./components/Home";
 import Services from "./components/Services";
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+  NavLink,
+} from "react-router-dom";
 import Contact from "./components/Contact";
 // import Error from "./components/Error";
-import Navbar from "./components/Navbar";
 
-export default function App(){
+export default function App() {
   return (
     <>
-    <Navbar/>
       <Router>
+        <div className="container-fluid nav_bg">
+          <div className="row">
+            <div className="col-10 mx-auto">
+              <nav className="navbar navbar-expand-lg bg-light">
+                <div className="container-fluid">
+                  <NavLink className="navbar-brand" to="/">
+                    ravi_dhwn_
+                  </NavLink>
+                  <button
+                    className="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                  >
+                    <span className="navbar-toggler-icon"></span>
+                  </button>
+                  <div
+                    className="collapse navbar-collapse"
+                    id="navbarSupportedContent"
+                  >
+                    <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+                      <li className="nav-item">
+                        <NavLink className="nav-link" to="/">
+                          Home
+                        </NavLink>
+                      </li>
+                      <li className="nav-item">
+                        <NavLink className="nav-link" to="/services">
+                          Services
+                        </NavLink>
+                      </li>
+                      <li className="nav-item">
+                        <NavLink className="nav-link" to="/about">
+                          About
+                        </NavLink>
+                      </li>
+                      <li className="nav-item">
+                        <NavLink className="nav-link" to="/contact">
+                          Contact
+                        </NavLink>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+            </div>
+          </div>
+        </div>
         <Switch>
           <Route exact path="/">
             <Home />
           </Route>
-          <Route  exact path="/services">
+          <Route exact path="/services">
             <Services />
           </Route>
-          <Route exact path="/contact">   
+          <Route exact path="/contact">
             <Contact />
           </Route>
           <Route exact path="/about">
@@ -28,12 +83,9 @@ export default function App(){
           {/* <Route path="*">
             <Error />
           </Route> */}
-          <Redirect to= "/" />
+          <Redirect to="/" />
         </Switch>
       </Router>
     </>
   );
 }
-
-
-
